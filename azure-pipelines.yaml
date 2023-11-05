@@ -24,7 +24,8 @@ stages:
 # BUILD STAGE
 #--------------------------------------------#
 - stage: Build
-  pool: Default
+  pool: 
+    name: Default
   jobs:
   - job: BuildInfrastructure
     steps:
