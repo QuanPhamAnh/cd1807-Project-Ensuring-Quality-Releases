@@ -23,10 +23,8 @@ stages:
 #--------------------------------------------#  
 # BUILD STAGE
 #--------------------------------------------#
-- stage: Deploy   
-  pool: Default
-
 - stage: Build
+  pool: Default
   jobs:
   - job: BuildInfrastructure
     steps:
