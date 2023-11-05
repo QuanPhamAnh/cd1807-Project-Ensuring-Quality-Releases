@@ -8,6 +8,7 @@ tenant_id = "40127cd4-45f3-49a3-b05d-315a43a9f033"
 location = "East US"
 resource_group_name = "Azuredevops"
 application_type = "QuanPA2"
+resource_group = "QuanPA2AzureDevOps"
 
 # Network
 virtual_network_name = ""
