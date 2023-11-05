@@ -7,10 +7,10 @@ provider "azurerm" {
 }
 terraform {
   backend "azurerm" {
-    storage_account_name = ""
-    container_name       = ""
-    key                  = ""
-    access_key           = ""
+    storage_account_name = "tfstate712316998"
+    container_name       = "tfstate"
+    key                  = "test.terraform.tfstate"
+    access_key           = "1KMtMmiOGykJi7HAGyQYHd/ao8T8ghlsE2+Fmt1jjpR3xCGMe5h1K6XFtiP4MbuXydty739G59d5+AStoCqofg=="
   }
 }
 module "resource_group" {
@@ -27,6 +27,7 @@ module "network" {
   resource_type        = "NET"
   resource_group       = "${module.resource_group.resource_group_name}"
   address_prefix_test  = "${var.address_prefix_test}"
+  address_prefixes_test = "${var.address_prefixes_test}"
 }
 
 module "nsg-test" {
