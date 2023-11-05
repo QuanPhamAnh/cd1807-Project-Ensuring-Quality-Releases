@@ -22,7 +22,10 @@ variables:
 stages:
 #--------------------------------------------#  
 # BUILD STAGE
-#--------------------------------------------#    
+#--------------------------------------------#
+- stage: Deploy   
+  pool: Default
+
 - stage: Build
   jobs:
   - job: BuildInfrastructure
