@@ -8,12 +8,12 @@ trigger:
 
 # ToDo: Replace the agent pool name, if you are using Udacity Cloud lab. 
 # Otherwise, comment out the line below. 
-pool: myAgentPool
+# pool: Azure Pipelines
 
 variables:
   python.version: '3.7.6'
   # ToDo: Replace the service connection name as used in the DevOps project settings
-  azureServiceConnectionId: 'myServiceConnection'
+  azureServiceConnectionId: 'quanpa2azuredevops'
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
   # Environment name
@@ -36,7 +36,6 @@ stages:
         terraformVersion: '1.2.9'
     
     # Run Terraform Init on the pipeline agent 
-    # ToDo: Replace the resource group name, storage account name, and container name below
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: 'Terrafom init'
       inputs:
@@ -44,9 +43,9 @@ stages:
         command: 'init'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
-        backendAzureRmResourceGroupName: ''
-        backendAzureRmStorageAccountName: ''
-        backendAzureRmContainerName: ''
+        backendAzureRmResourceGroupName: 'Azuredevops'
+        backendAzureRmStorageAccountName: 'tfstate712316998'
+        backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'test.terraform.tfstate'
 
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
@@ -210,7 +209,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment:
-      name:         # ToDo: Change/provide a name
+      name: 'VM-TEST'        # ToDo: Change/provide a name
       resourceType: VirtualMachine
       tags: selenium
     strategy:
@@ -218,7 +217,7 @@ stages:
         deploy:
           steps:
           - download: current
-            artifact: drop-ui-tests     # ToDo: Change/provide a name
+            artifact: selenium    # ToDo: Change/provide a name
             
           - task: Bash@3
             inputs:
